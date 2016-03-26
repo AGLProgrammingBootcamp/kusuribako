@@ -1,0 +1,11 @@
+<%= form_for @medicine do |f| %>
+  薬の名前
+  <%= f.text_field :name %>
+  効用
+  <%= f.text_field :effect %>
+  いつ飲むか
+  <input type="radio" value="1" name="product[maker_id]" id="product_maker_id_1"><label for="product_maker_id_1">朝 </label>
+  <input type="radio" value="2" name="product[maker_id]" id="product_maker_id_2"><label for="product_maker_id_2">昼 </label>
+  <input type="radio" value="3" name="product[maker_id]" id="product_maker_id_3"><label for="product_maker_id_3">夕 </label>
+  <%= f.submit "登録する" %>
+<% end %>
