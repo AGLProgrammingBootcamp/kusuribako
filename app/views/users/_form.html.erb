@@ -16,16 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label '朝' %><br>
-    <%= f.check_box :morning %>
-  </div>
-  <div class="field">
-    <%= f.label '昼' %><br>
-    <%= f.check_box :afternoon %>
-  </div>
-  <div class="field">
-    <%= f.label '夜' %><br>
-    <%= f.check_box :evening %>
+    <%= f.label 'パスワード' %><br>
+    <%= f.password_field :password %>
   </div>
   <div class="actions">
     <%= f.submit '送信' %>
