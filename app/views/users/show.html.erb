@@ -5,18 +5,5 @@
   <%= @user.name %>
 </p>
 
-<p>
-  <strong>朝:</strong>
-  <%= @user.morning %>
-</p>
-<p>
-  <strong>昼:</strong>
-  <%= @user.afternoon %>
-</p>
-<p>
-  <strong>夜:</strong>
-  <%= @user.evening %>
-</p>
-
 <%= link_to '編集', edit_user_path(@user) %> |
-<%= link_to '戻る', users_path %>
+<%= link_to '戻る', root_path %>

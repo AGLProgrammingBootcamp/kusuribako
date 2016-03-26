@@ -37,9 +37,7 @@ ActiveRecord::Schema.define(version: 20160326080018) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "morning"
-    t.boolean  "afternoon"
-    t.boolean  "evening"
+    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
