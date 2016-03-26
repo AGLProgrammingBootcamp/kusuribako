@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>名前:</strong>
+  <%= @medicine.name %>
+</p>
+
+<p>
+  <strong>効用:</strong>
+  <%= @medicine.effect %>
+</p>
+
+<p>
+  <strong>頻度:</strong>
+  <% @medicine.frequencies.each do |frequency| %>
+    <%= frequency.name %>
+  <% end %>
+</p>
+
+<%= link_to '編集', edit_medicine_path(@medicine) %> |
+<%= link_to '戻る', medicines_path %>

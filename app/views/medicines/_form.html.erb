@@ -1,0 +1,33 @@
+<%= form_for(@medicine) do |f| %>
+  <% if @medicine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medicine.errors.count, "error") %> prohibited this medicine from being saved:</h2>
+
+      <ul>
+      <% @medicine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label '名前' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label '効用' %><br>
+    <%= f.text_field :effect %>
+  </div>
+  <div class="field">
+    <%= f.label '頻度' %><br>
+    <% @frequencies.each do |frequency| %>
+      <%= check_box_tag "medicine[frequency_ids][]", frequency.id, @medicine.frequencies.include?(frequency) %>
+      <%= frequency.name %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit '送信' %>
+  </div>
+  
+<% end %>

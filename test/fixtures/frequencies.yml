@@ -2,10 +2,6 @@
 
 one:
   name: MyString
-  effect: MyString
-  frequency: MyString
 
 two:
   name: MyString
-  effect: MyString
-  frequency: MyString
