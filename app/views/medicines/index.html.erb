@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>お薬一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>効用</th>
+      <th>頻度</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medicines.each do |medicine| %>
+      <tr>
+        <td><%= medicine.name %></td>
+        <td><%= medicine.effect %></td>
+        <td><%= medicine.frequency %></td>
+        <td><%= link_to '詳細', medicine %></td>
+        <td><%= link_to '編集', edit_medicine_path(medicine) %></td>
+        <td><%= link_to '削除', medicine, method: :delete, data: { confirm: '削除しますか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新しいお薬', new_medicine_path %>
