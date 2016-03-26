@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>ユーザ一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>朝</th>
+      <th>昼</th>
+      <th>夜</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.morning %></td>
+        <td><%= user.afternoon %></td>
+        <td><%= user.evening %></td>
+        <td><%= link_to '詳細', user %></td>
+        <td><%= link_to '編集', edit_user_path(user) %></td>
+        <td><%= link_to '削除', user, method: :delete, data: { confirm: '消しますか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新しいユーザ', new_user_path %>
