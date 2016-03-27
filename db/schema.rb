@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326080018) do
+ActiveRecord::Schema.define(version: 20160327005124) do
 
   create_table "frequencies", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 20160326080018) do
 
   add_index "frequencies_medicines", ["frequency_id"], name: "index_frequencies_medicines_on_frequency_id"
   add_index "frequencies_medicines", ["medicine_id"], name: "index_frequencies_medicines_on_medicine_id"
+
+  create_table "histories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "medicines", force: :cascade do |t|
     t.string   "name"

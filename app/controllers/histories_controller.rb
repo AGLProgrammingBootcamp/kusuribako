@@ -4,6 +4,7 @@ class HistoriesController < ApplicationController
   # GET /histories
   # GET /histories.json
   def index
+    @medicines = Medicine.all
     @histories = History.all
   end
 
