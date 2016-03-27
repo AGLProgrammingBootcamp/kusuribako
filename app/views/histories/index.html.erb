@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-
-<h1>飲んでいる薬</h1>
+<h1>クスリバコ</h1>
+<h2>飲んでいる薬</h2>
 
 <table>
   <thead>
@@ -21,7 +21,24 @@
   </tbody>
 </table>
 
-<h1>飲めたかな履歴</h1>
+<h2>飲むべきタイミング</h2>
+<% @timings.each do |timing| %>
+  <%= timing.name %>
+<% end %>
+
+<h2>飲めたかな履歴</h2>
+
+<%= @dates.each do |date| %>
+  <h3><%= date %></h3>
+  <% @timings.each do |timing| %>
+    <%= timing.name %>
+    <% if @achieves[date][timing.name] %>
+      飲めたね！
+    <% else %>
+      飲んでないよ！
+    <% end %>
+  <% end %>
+<% end %>
 
 <table>
   <thead>
@@ -42,5 +59,7 @@
 </table>
 
 <br>
+
+<%= @achieves %>
 
 <%= link_to 'New History', new_history_path %>

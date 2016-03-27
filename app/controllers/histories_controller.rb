@@ -1,11 +1,51 @@
+require 'date'
+
 class HistoriesController < ApplicationController
   before_action :set_history, only: [:show, :edit, :update, :destroy]
 
   # GET /histories
   # GET /histories.json
   def index
-    @medicines = Medicine.all
-    @histories = History.all
+    @medicines = Medicine.all # 飲むべき薬リスト
+    @histories = History.all # 飲んだ履歴
+
+    # 飲むタイミング
+    @timings = []
+    @medicines.each do |medicine|
+      medicine.frequencies.each do |frequency|
+        @timings << frequency
+      end
+    end
+    @timings.uniq!
+
+    #@histories = History.all
+    # 日付データ(開始日が悩ましい)
+    @dates = []
+    (Date.parse("2016-02-11")..Date.parse(Time.now.to_s)).each do |date|
+      @dates << date
+    end
+    @dates.reverse!
+
+    # 薬が飲めた/飲めなかったをハッシュで保持
+    @achieves = {}
+    @dates.each do |date|
+      @achieves[date] = {}
+      @timings.each do |timing|
+        if timing.name == "朝"
+          from = date.to_s + " 04:00:00"
+          to = date.to_s + " 10:00:00"
+          @achieves[date]["朝"] = History.where(:created_at => from...to).any?
+        elsif timing.name == "昼"
+          from = date.to_s + " 10:00:00"
+          to = date.to_s + " 16:00:00"
+          @achieves[date]["昼"] = History.where(:created_at => from...to).any?
+        elsif timing.name == "夕"
+          from = date.to_s + " 16:00:00"
+          to = date.to_s + " 24:00:00"
+          @achieves[date]["夕"] = History.where(:created_at => from...to).any?
+        end
+      end
+    end
   end
 
   # GET /histories/1
