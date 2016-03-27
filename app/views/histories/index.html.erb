@@ -33,8 +33,8 @@
   <tbody>
     <% @histories.each do |history| %>
       <tr>
+        <td><%= history.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
         <td><%= link_to 'Show', history %></td>
-        <td><%= link_to 'Edit', edit_history_path(history) %></td>
         <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
