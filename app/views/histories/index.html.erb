@@ -1,6 +1,44 @@
 <p id="notice"><%= notice %></p>
+<h1>クスリバコ</h1>
+<h2>飲んでいる薬</h2>
 
-<h1>Listing Histories</h1>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medicines.each do |medicine| %>
+      <tr>
+        <td><%= medicine.name %></td>
+        <td><%= link_to '詳細表示', medicine %></td>
+        <td><%= link_to '編集', edit_medicine_path(medicine) %></td>
+        <td><%= link_to '削除', medicine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>飲むべきタイミング</h2>
+<% @timings.each do |timing| %>
+  <%= timing.name %>
+<% end %>
+
+<h2>飲めたかな履歴</h2>
+
+<%= @dates.each do |date| %>
+  <h3><%= date %></h3>
+  <% @timings.each do |timing| %>
+    <%= timing.name %>
+    <% if @achieves[date][timing.name] %>
+      飲めたね！
+    <% else %>
+      飲んでないよ！
+    <% end %>
+  <% end %>
+<% end %>
 
 <table>
   <thead>
@@ -12,8 +50,8 @@
   <tbody>
     <% @histories.each do |history| %>
       <tr>
+        <td><%= history.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
         <td><%= link_to 'Show', history %></td>
-        <td><%= link_to 'Edit', edit_history_path(history) %></td>
         <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -21,5 +59,7 @@
 </table>
 
 <br>
+
+<%= @achieves %>
 
 <%= link_to 'New History', new_history_path %>
