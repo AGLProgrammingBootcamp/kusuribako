@@ -14,7 +14,9 @@ class HistoriesController < ApplicationController
 
   # GET /histories/new
   def new
-    @history = History.new
+    
+    History.create
+  
   end
 
   # GET /histories/1/edit
