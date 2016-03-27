@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to '詳細', @medicine %> |
-<%= link_to '戻る', medicines_path %>
+<%= button_to '詳細', @medicine,:method => :get %> 
+<%= button_to '戻る', medicines_path ,:method => :get%>
+<%= button_to "日々の記録", histories_path,:method => :get <%></%>
