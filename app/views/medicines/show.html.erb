@@ -17,5 +17,6 @@
   <% end %>
 </p>
 
-<%= link_to '編集', edit_medicine_path(@medicine) %> |
-<%= link_to '戻る', medicines_path %>
+<%= button_to '編集', edit_medicine_path(@medicine),:method => :get %> 
+<%= button_to '戻る', new_medicine_path,:method => :get %>
+<%= button_to "毎日のおくすり記録", histories_path,:method => :get %>
